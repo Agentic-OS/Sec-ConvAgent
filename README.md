@@ -7,22 +7,34 @@ this a project related into Security Conversation over Agent-User to enhance the
 
 ```mermaid
 graph LR
-    participant User as "User"
-    participant Frontend as "Frontend (Streamlit)"
-    participant Backend as "Backend (LangChain)"
-    participant VectorStore as "Vector Store"
-    participant Encryption as "Encryption (Cryptography)"
-    participant Model as "Model (OLLAMA)"
+    U((User)) --> F[Frontend<br>Streamlit]
+    F --> E[Encryption<br>Layer]
+    E --> B[Backend<br>LangChain]
+    B --> V[(Vector DB)]
+    B --> D[Decryption<br>Layer]
+    D --> O[OLLAMA<br>LLM]
+    
+    subgraph Container
+        F
+        E
+        B
+        D
+        V
+    end
+    
+    subgraph External
+        O
+    end
 
-    User->>Frontend: User Input
-    Frontend->>Backend: Process User Input
-    Backend->>VectorStore: Store User Message and Embedding
-    Backend->>Encryption: Encrypt User Message
-    Encryption->>Backend: Decrypt User Message
-    Backend->>Model: Generate Response
-    Model->>Backend: Response
-    Backend->>Frontend: Response
-    Frontend->>User: Response
+    classDef container fill:#e1f5fe,stroke:#01579b
+    classDef external fill:#fff3e0,stroke:#ff6f00
+    classDef user fill:#f5f5f5,stroke:#616161
+    classDef security fill:#e8f5e9,stroke:#2e7d32
+    
+    class F,B,V container
+    class O external
+    class U user
+    class E,D security
 ```
 
 this project include the following steps :
