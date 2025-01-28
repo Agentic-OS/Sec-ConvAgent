@@ -7,35 +7,22 @@ this a project related into Security Conversation over Agent-User to enhance the
 
 ```mermaid
 graph LR
-    %% Components
-    U((User)) --> |1. Request| F[Frontend<br>Streamlit]
-    F --> |2. Raw Input| E[Encryption Layer<br>Public Key]
-    E --> |3. Encrypted| B[Backend<br>LangChain]
-    B --> |4. Store| V[(Vector Store<br>Encrypted Data)]
-    B --> |5. Forward| D[Decryption Layer<br>Private Key]
-    D --> |6. Query| O[OLLAMA LLM]
+    U((User)) --> F[Frontend<br>Streamlit]
+    F --> E[Encryption<br>Layer]
+    E --> B[Backend<br>LangChain]
+    B --> V[(Vector DB)]
+    B --> D[Decryption<br>Layer]
+    D --> O[OLLAMA<br>LLM]
     
-    %% Response Path
-    O --> |7. Response| D
-    D --> |8. Encrypted| B
-    B --> |9. Process| E
-    E --> |10. Decrypted| F
-    F --> |11. Display| U
-    
-    subgraph Container
+    subgraph Backend
         F
         E
         B
+        D
         V
-        D
     end
     
-    subgraph Security Layer
-        E
-        D
-    end
-    
-    subgraph External Service
+    subgraph External
         O
     end
 
@@ -43,8 +30,6 @@ graph LR
     classDef external fill:#fff3e0,stroke:#ff6f00
     classDef user fill:#f5f5f5,stroke:#616161
     classDef security fill:#e8f5e9,stroke:#2e7d32
-    classDef request stroke:#2196f3,color:#2196f3
-    classDef response stroke:#4caf50,color:#4caf50
     
     class F,B,V container
     class O external
