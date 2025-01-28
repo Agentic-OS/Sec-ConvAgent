@@ -1,0 +1,7 @@
+{
+    "VECTOR_DB_PATH": "./vector_db",
+    "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2",
+    "OLLAMA_MODEL": "deepseek-r1:1.5b",
+    "OLLAMA_API_KEY": "no-key-api",
+    "TEMPERATURE": 0.7
+}
