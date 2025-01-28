@@ -14,8 +14,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
+# Create directory for vector database
+RUN mkdir -p /app/vector_db
+
 # Expose port for Streamlit
 EXPOSE 8501
 
 # Run the application
-CMD ["streamlit", "run", "app.py"] 
+CMD ["streamlit", "run", "app.py"]

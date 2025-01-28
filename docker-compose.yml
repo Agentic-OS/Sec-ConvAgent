@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   app:
     build: .
@@ -7,8 +6,14 @@ services:
       - "8501:8501"
     volumes:
       - .:/app
+      - vector_db:/app/vector_db
     environment:
-      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_HOST=${OLLAMA_HOST}
+      - OLLAMA_MODEL=${OLLAMA_MODEL}
+      - VECTOR_DB_PATH=${VECTOR_DB_PATH}
+      - TEMPERATURE=${TEMPERATURE}
+      - OLLAMA_API_KEY=${OLLAMA_API_KEY}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL}
     depends_on:
       - ollama
 
@@ -18,6 +23,9 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    command: >
+      sh -c "ollama serve && ollama pull deepseek-r1:1.5b"
 
 volumes:
-  ollama_data: 
+  ollama_data:
+  vector_db:
