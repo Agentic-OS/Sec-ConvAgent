@@ -12,7 +12,7 @@ graph LR
     E --> B[Backend<br>LangChain]
     B --> V[(Vector DB)]
     B --> D[Decryption<br>Layer]
-    D --> O[OLLAMA<br>LLM]
+    D --> O[Agent<br>R1]
     
     subgraph Backend
         F
