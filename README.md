@@ -1,6 +1,6 @@
-# Sec-ConvAgent
+## Sec-ConvAgent
 
-this a project related into Security Conversation over Agent-User to enhance the Privacy-data Driven 
+this a project related into Security Conversation over Agent-User to enhance the Privacy-data Driven Fully Encryption-Decryption Mechanism Conversation between Agent and User
 
 #### the Architecture system design 
 
@@ -46,6 +46,26 @@ this project include the following steps :
 5. using Genmi Api key Ollama Compatibility 
 
 
+### installation
+
+**Note** : you need to set up the environment variables before running the Streamlit app. `.env` file is used for this purpose.
+
+1. create a virtual environment
+```bash
+python -m venv Sec-Agent
+source Sec-Agent/bin/activate
+```
+
+2. install dependencies
+```bash 
+git clone https://github.com/Agentic-OS/Sec-ConvAgent.git
+pip install -r requirements.txt && streamlit run app.py
+```
+
+3. Run Docker-compose
+```bash
+docker-compose up -d    
+```
 #### the techno used 
 
 - LangChain 
@@ -54,17 +74,14 @@ this project include the following steps :
 - cryptography
 - request 
 
-## Secure Chat Application
 
-This is a secure chat application built using Python and various libraries and frameworks, including Streamlit, LangChain, and cryptography. The app provides a conversational interface for users to interact with, while ensuring the security and privacy of user data.
 
 ## Features
 
 * Secure conversational interface
-* Natural language understanding and response generation
 * Personalized experience through vector store management
 * Data security through encryption and secure storage
-* Access control mechanisms for authorized users
+* Access control mechanisms for authorized users Key Managemen
 
 ## System Design
 
@@ -74,7 +91,7 @@ The system consists of the following components:
 * Backend: Responsible for handling user input, processing messages, and generating responses using LangChain
 * Vector Store: Stores user messages and their corresponding embeddings (vector representations) for personalized experience
 * Encryption: Uses cryptography to encrypt and decrypt user messages for secure storage and transmission
-* Model: Utilizes a pre-trained language model (OLLAMA) to generate responses to user queries
+* Model: Utilizes a  (OLLAMA) DeepSeek-R1 model to generate responses to user queries
 
 ## Technical Requirements
 
@@ -84,34 +101,4 @@ The system consists of the following components:
 * Cryptography 41.0.0 or later
 * OLLAMA model (deepseek-r1:1.5b)
 
-## Installation
-
-1. Clone the repository
-2. Install dependencies using `pip install -r requirements.txt`
-3. Run the application using `streamlit run app.py`
-
-## Usage
-
-1. Open a web browser and navigate to `http://localhost:8501`
-2. Interact with the chat application by typing messages and receiving responses
-3. Use the sidebar to view chat history, model information, and controls
-
-## System Flow
-
-1. User Input: The user types a message and submits it to the frontend.
-2. Process User Input: The frontend sends the user input to the backend for processing.
-3. Store User Message and Embedding: The backend stores the user message and its corresponding embedding in the vector store.
-4. Encrypt User Message: The backend encrypts the user message using cryptography.
-5. Decrypt User Message: The backend decrypts the user message using cryptography.
-6. Generate Response: The backend uses the model to generate a response to the user query.
-7. Response: The backend sends the response to the frontend.
-8. Display Response: The frontend displays the response to the user.
-
-## System Components
-
-* Frontend: Streamlit
-* Backend: LangChain
-* Vector Store: Chroma
-* Encryption: Cryptography
-* Model: OLLAMA
 
