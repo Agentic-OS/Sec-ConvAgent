@@ -1,6 +1,6 @@
 ## Sec-ConvAgent
 
-this a project related into Security Conversation over Agent-User to enhance the Privacy-data Driven Fully Encryption-Decryption Mechanism Conversation between Agent and User
+Secure Conversational Agentic-Flow over Agent-User to enhance the Privacy-data Driven Fully Encryption-Decryption Mechanism Conversation between Agent and User
 
 #### the Architecture system design 
 
