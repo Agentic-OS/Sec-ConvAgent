@@ -1,10 +1,11 @@
+version: '3.8'
 services:
   app:
     build: .
     ports:
       - "8501:8501"
     volumes:
-      - ${PWD:-.}:/app:rw  # Windows path compatibility
+      - .:/app
       - vector_db:/app/vector_db
     environment:
       - OLLAMA_HOST=http://ollama:11434
@@ -15,41 +16,16 @@ services:
       - EMBEDDING_MODEL=${EMBEDDING_MODEL}
     depends_on:
       - ollama
-    networks:
-      net:
-        aliases:
-          - app
-    container_name: streamlit-app
-    restart: always
 
   ollama:
-    volumes:
-      - ./ollama/ollama:/root/.ollama
-    container_name: ollama
-    pull_policy: always
-    tty: true
-    restart: unless-stopped
     image: ollama/ollama:latest
     ports:
-      - 7869:11434
-    environment:
-      - OLLAMA_KEEP_ALIVE=24h
-   
-    command: sh -c "ollama serve && ollama pull deepseek-r1:1.5b"
-    networks:
-      - ollama-docker
-    
-networks:
-  net:
-    driver: bridge
-    name: net  # Fixed network name
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.28.0.0/16  # Fixed subnet for predictable networking
+      - "11435:11434"  # Changed to use port 11435 externally
+    volumes:
+      - ollama_data:/root/.ollama
+    command: >
+      sh -c "ollama serve && ollama pull deepseek-r1:1.5b"
 
 volumes:
-  vector_db:
-    driver: local
   ollama_data:
-    driver: local
+  vector_db:
